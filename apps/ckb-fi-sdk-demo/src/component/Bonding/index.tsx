@@ -140,6 +140,7 @@ const Bonding = () => {
   const handleReset = () => {
     setParams(defaultParams);
     setLink("");
+    toast.success("Reset successfully");
   };
 
   return (
