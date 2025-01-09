@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "react-toastify/dist/ReactToastify.css";
 import "./assets/style/index.scss";
-import App from "./App.tsx";
+import App from "./App";
 // import "virtual:windi.css";
 
 const toastRoot = document.createElement("div");
