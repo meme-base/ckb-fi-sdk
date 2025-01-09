@@ -96,7 +96,7 @@ const defaultCarvIdWidgetOptions = {
   offset: { left: 20, right: 20, top: 40, bottom: 60 },
 };
 
-@customElement("ckb-fi-sdk-widget")
+@customElement("ckb-fi-sdk")
 export class CarvIdWidget extends LitElement {
   @property({ type: Object })
   options?: I_CarvIdWidgetOptions = defaultCarvIdWidgetOptions;

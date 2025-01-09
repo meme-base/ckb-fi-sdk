@@ -28,7 +28,7 @@
     "preserveWatchOutput": true,
     "noUnusedParameters": false,
     "emitDecoratorMetadata": true,
-    "types": ["node", "vite/client"],
+    "types": ["node"],
     "plugins": [
       {
         "name": "ts-lit-plugin"

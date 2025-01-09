@@ -13,8 +13,7 @@
   "dependencies": {
     "@ckb-fi/assets": "workspace:*",
     "@ckb-fi/bonding": "workspace:*",
-    "@ckb-fi/utils": "workspace:*",
-    "lit": "^3.2.0"
+    "@ckb-fi/utils": "workspace:*"
   },
   "devDependencies": {
     "@ckb-fi/eslint-config": "workspace:*",
