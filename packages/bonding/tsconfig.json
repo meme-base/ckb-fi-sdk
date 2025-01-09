@@ -1,0 +1,11 @@
+{
+  "extends": "@ckb-fi/typescript-config/base.json",
+  "include": [
+    "src",
+    "src/**/*",
+    "tsup.config.ts"
+  ],
+  "compilerOptions": {
+    "rootDir": "."
+  }
+}

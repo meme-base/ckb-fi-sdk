@@ -1,0 +1,26 @@
+{
+  "name": "ckb-fi-sdk-demo",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --mode dev",
+    "dev:prod": "vite --mode prod",
+    "build": "tsc && vite build --mode dev",
+    "build:prod": "tsc && vite build --mode prod",
+    "preview": "vite preview",
+    "lint": "eslint \"src/**/*.tsx\""
+  },
+  "dependencies": {
+    "@ckb-fi/assets": "workspace:*",
+    "@ckb-fi/bonding": "workspace:*",
+    "@ckb-fi/utils": "workspace:*",
+    "lit": "^3.2.0"
+  },
+  "devDependencies": {
+    "@ckb-fi/eslint-config": "workspace:*",
+    "@ckb-fi/typescript-config": "workspace:*",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4"
+  }
+}

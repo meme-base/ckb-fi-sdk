@@ -1,0 +1,107 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  box-sizing: border-box;
+  color: #fff;
+  background: linear-gradient(320deg, #0e1d2c, #28273b);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+button {
+  cursor: pointer;
+  height: 40px;
+  padding: 0 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  transition: filter 0.3s;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+
+button[disabled] {
+  cursor: default;
+  opacity: 0.6;
+  filter: brightness(0.7);
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 640px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: none;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2;
+  min-height: 100%;
+}
+
+// Toastify CSS - start
+.Toastify__toast-container {
+  position: fixed;
+  z-index: 2000 !important;
+  top: 1em !important;
+  left: 50% !important;
+  max-width: 96vw;
+  transform: translateX(-50%) !important;
+  padding: 4px;
+
+  .Toastify__toast {
+    width: fit-content;
+    min-width: 100px;
+    min-height: 40px;
+    padding: 4px 8px 4px 8px;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+}

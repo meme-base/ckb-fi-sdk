@@ -1,0 +1,3 @@
+{
+  "extends": "@ckb-fi/typescript-config/base.json",
+}

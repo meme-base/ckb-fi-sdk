@@ -1,0 +1,17 @@
+{
+  "name": "@ckb-fi/utils",
+  "version": "0.0.0",
+  "exports": {
+    "./common": "./src/common.ts"
+  },
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint \"**/*.ts\""
+  },
+  "devDependencies": {
+    "@ckb-fi/eslint-config": "workspace:*",
+    "@ckb-fi/typescript-config": "workspace:*",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
+  }
+}

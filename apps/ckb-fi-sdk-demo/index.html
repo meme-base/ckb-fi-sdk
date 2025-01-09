@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico?1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CKB-FI SDK demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script>
+      eruda.init({ tool: ["console", "network", "resources"] });
+    </script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@ckb-fi/bonding@latest/dist/ckb-fi-bonding.umd.js"></script>
+    <script>
+      window.onload = function () {
+        const instance = new CarvIdSDK.CarvId({
+          env: "dev",
+          showWidget: true,
+          draggable: true,
+          authorizeConfig: {
+            client_id: "0a17299349c4b3e57bc8c25581b01bd0ec80c279",
+            client_secret:
+              "871cc95ca5a54866492bb052e0d487799e21a5c5896b7cd2ecbe813876a4b286",
+            response_type: "code",
+            state: "test app state",
+            scope: "carv_id_basic_read email_basic_read evm_address_basic_read",
+            redirect_uri: "https://t.me/BabyChinBot/carv_id_demo",
+          },
+        });
+        console.log(instance, "CKB-FI SDK initialized");
+      };
+    </script> -->
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
