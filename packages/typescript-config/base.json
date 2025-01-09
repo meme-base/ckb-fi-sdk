@@ -13,7 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "inlineSources": false,
     "isolatedModules": true,
-    "module": "esnext",
+    "module": "ESNext",
     "target": "ESNext",
     "jsx": "react-jsx",
     "moduleResolution": "bundler",
