@@ -10,7 +10,7 @@ The SDK for CKB-FI ecosystem.
 
 ## 🎾 Demo
 
- - [CKB-FI SDK Demo](https://ckb-fi-sdk-test.verel.com/)
+ - [CKB-FI SDK Demo](https://ckb-fi-sdk-test.vercel.com/)
 
 <br/>
 
