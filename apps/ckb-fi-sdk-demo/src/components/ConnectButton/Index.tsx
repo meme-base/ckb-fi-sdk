@@ -19,7 +19,7 @@ import { COMMON_EVENTS } from '@/enum/events'
 import useCccConnect from './useCccConnect'
 import { useEvent } from '@/hooks/useEvent'
 import useMedia from '@/hooks/useMedia'
-import { PATH } from '@/constants/path'
+// import { PATH } from '@/constants/path'
 
 const ConnectButton = ({ sx = {} }: { sx?: SxProps }) => {
   const { isXs } = useMedia()

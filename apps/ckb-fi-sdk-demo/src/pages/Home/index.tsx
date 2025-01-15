@@ -8,13 +8,14 @@ import ModalDirectLaunch from './component/ModalDirectLaunch'
 import { BondingItem } from '@/types/module/bonding'
 import BondingRow from './component/BondingRow'
 import NoData from '@/components/NoData'
+import { APP_ENV, IS_DEV_ENV } from '@/config/env'
 import { PATH } from '@/constants/path'
 import { toast } from 'react-toastify'
 import './index.css'
 
-const LOCAL_BONDING_KEY = 'ckbfi_local_bonding_list'
+const LOCAL_BONDING_KEY = 'ckb-fi:local_bonding_list'
 
-const BondingInstance = new Bonding({ env: Enum_Env.DEV }) // 初始化 Bonding SDK
+const BondingInstance = new Bonding({ env: APP_ENV }) // 初始化 Bonding SDK
 console.log(BondingInstance)
 
 // const defaultParams: I_LaunchParams = {
@@ -113,8 +114,7 @@ const PageHome = () => {
       <Stack className="container-bonding" spacing={2}>
         <Stack>
           <Typography variant="h2" className="title">
-            CKB-FI Bonding SDK{' '}
-            <span>Demo{Enum_Env.DEV === 'dev' ? '@dev' : ''}</span>
+            CKB-FI Bonding SDK <span>Demo{IS_DEV_ENV ? '@dev' : ''}</span>
           </Typography>
           <Link
             href="https://github.com/meme-base/ckb-fi-sdk/blob/main/README.md"
