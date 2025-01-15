@@ -129,19 +129,14 @@ const PageHome = () => {
           </Link>
         </Stack>
         <Stack spacing={1}>
-          <Stack
-            direction="row"
-            alignItems="center"
-            className="box-col config-box"
-            spacing={2}
-          >
+          <Stack direction="row" alignItems="center" spacing={2}>
             <Typography variant="h6">🟢 Launch Bonding</Typography>
             <Button id="btn-reset" onClick={handleReset}>
               ↪️ Reset
             </Button>
             {/* <textarea rows={8} value={paramsStr} onChange={handleParamsChange} /> */}
           </Stack>
-          <Stack className="btn-col" spacing={1} pl={3}>
+          <Stack className="step-col" spacing={1} pl={3}>
             <Stack spacing={1}>
               <Stack direction="row" alignItems="center" spacing="4px">
                 <Typography>Step 1</Typography>
@@ -175,7 +170,7 @@ const PageHome = () => {
           </Stack>
         </Stack>
         <Stack spacing={1}>
-          <Stack className="box-col params-box" spacing={1}>
+          <Stack spacing={1}>
             <Typography variant="h6">🔵 Bonding List</Typography>
           </Stack>
           <Stack spacing={1} pl={3}>
