@@ -1,16 +1,7 @@
 export {
-  CarvId,
+  Bonding,
   Enum_Env,
-  Enum_CarvIdTheme,
-  Enum_CarvIdIconPlacement,
-  Enum_CarvIdIconDirection,
-  Enum_CarvIdIntent,
-} from "./module/bonding";
-export type {
-  I_CarvIdOptions,
-  I_CarvIdWidgetOptions,
-  I_PositionInfo,
-  I_CarvIdIconPlacementOffset,
-  I_CarvIdAuthorizeConfig,
-  I_AuthenticateResponse,
+  type I_BondingOptions,
+  type I_LoginParams,
+  type I_LaunchParams,
 } from "./module/bonding";

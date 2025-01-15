@@ -8,7 +8,7 @@ export default defineConfig({
   minifyWhitespace: true,
   treeshake: true,
   splitting: false,
-  sourcemap: false,
+  sourcemap: true,
   clean: true,
   platform: "neutral",
   // @ts-ignore

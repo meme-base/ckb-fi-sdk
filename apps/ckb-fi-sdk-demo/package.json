@@ -11,15 +11,23 @@
     "lint": "eslint \"src/**/*.tsx\""
   },
   "dependencies": {
+    "@ckb-ccc/connector-react": "^1.0.11",
     "@ckb-fi/assets": "workspace:*",
     "@ckb-fi/bonding": "workspace:*",
-    "@ckb-fi/utils": "workspace:*"
+    "@ckb-fi/utils": "workspace:*",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.0",
+    "@mui/lab": "6.0.0-beta.23",
+    "@mui/material": "^6.4.0",
+    "dayjs": "^1.11.13",
+    "events": "^3.3.0",
+    "numeral": "^2.0.6",
+    "react-advanced-cropper": "^0.20.0"
   },
   "devDependencies": {
     "@ckb-fi/eslint-config": "workspace:*",
     "@ckb-fi/typescript-config": "workspace:*",
     "eslint": "^8.57.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4"
+    "typescript": "^5.3.3"
   }
 }

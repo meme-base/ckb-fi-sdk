@@ -2,9 +2,12 @@
   "extends": "@ckb-fi/typescript-config/base.json",
   "compilerOptions": {
     "rootDir": ".",
+    "baseUrl": "."
   },
   "include": [
     "src",
-    "src/**/*"
+    "src/**/*",
+    "src/**/**/*",
+    "env.d.ts"
   ],
 }

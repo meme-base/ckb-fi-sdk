@@ -22,6 +22,7 @@ module.exports = {
         "array-callback-return": 0,
         "no-empty-function": 0,
         "no-case-declarations": 0,
+        "trailing-comma": 0,
         "react/prop-types": 0,
         "jsx-a11y/alt-text": 0,
         "no-script-url": 0,

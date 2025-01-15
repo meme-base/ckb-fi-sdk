@@ -28,14 +28,15 @@
     "preserveWatchOutput": true,
     "noUnusedParameters": false,
     "emitDecoratorMetadata": true,
-    "types": ["node"],
+    "types": ["node", "vite/client"],
     "plugins": [
       {
         "name": "ts-lit-plugin"
       }
     ],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "*": ["*", "index"]
     }
   },
   "ts-node": {
@@ -43,6 +44,6 @@
       "module": "CommonJS"
     }
   },
-  "include": ["src", "src/**/*", "../../.env.d.ts"],
+  "include": ["src", "src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

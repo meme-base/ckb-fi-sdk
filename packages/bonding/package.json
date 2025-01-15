@@ -1,6 +1,6 @@
 {
   "name": "@ckb-fi/bonding",
-  "version": "0.0.1",
+  "version": "0.0.1-beta.1",
   "license": "MIT",
   "type": "module",
   "repository": {
@@ -8,9 +8,6 @@
     "url": "git+https://github.com/meme-base/ckb-fi-sdk.git"
   },
   "homepage": "https://sdk.ckb.fi",
-  "exports": {
-    ".": "./src/ckb-fi-bonding.ts"
-  },
   "keywords": [
     "ckb",
     "ckb-fi",
@@ -20,8 +17,25 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup --dts",
-    "publish": "tsup --dts && npm publish --access=public",
+    "prepublishOnly": "npm run build",
+    "publish": "npm publish",
     "lint": "eslint \"**/*.ts\""
+  },
+  "exports": {
+    ".": "./src/ckb-fi-bonding.ts"
+  },
+  "publishConfig": {
+    "access": "public",
+    "main": "./dist/ckb-fi-bonding.cjs",
+    "module": "./dist/ckb-fi-bonding.mjs",
+    "types": "./dist/ckb-fi-bonding.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/ckb-fi-bonding.d.ts",
+        "import": "./dist/ckb-fi-bonding.mjs",
+        "require": "./dist/ckb-fi-bonding.cjs"
+      }
+    }
   },
   "files": [
     "dist",
@@ -32,7 +46,7 @@
     "@ckb-fi/eslint-config": "workspace:*",
     "@ckb-fi/typescript-config": "workspace:*",
     "@ckb-fi/utils": "workspace:*",
-    "eslint": "^8.57.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "eslint": "^8.57.0"
   }
 }
