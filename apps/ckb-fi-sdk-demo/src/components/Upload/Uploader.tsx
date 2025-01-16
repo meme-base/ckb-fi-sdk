@@ -29,8 +29,8 @@ import {
 import AddIcon from '@mui/icons-material/Add'
 import 'react-advanced-cropper/dist/style.css'
 import { EnumFileObjType } from '@/enum/common'
-import { toastWarning } from '@/utils/common'
 import { uploadImage } from '@/apis/common'
+import { toast } from 'react-toastify'
 import { debounce } from 'lodash-es'
 import axios from 'axios'
 
@@ -137,7 +137,7 @@ const Uploader = forwardRef((props: Props, ref) => {
       const size = file.size
       if (size >= sizeLimit * 1024 * 1024) {
         clear()
-        return toastWarning(sizeLimitTip || `Maximum support of ${sizeLimit}MB`)
+        return toast.warn(sizeLimitTip || `Maximum support of ${sizeLimit}MB`)
       }
 
       setFile(file)
