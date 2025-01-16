@@ -6,7 +6,6 @@ import axios, {
   CanceledError
 } from 'axios'
 import { AuthManager } from './authManager'
-import { BACKEND_API_URL } from '@/config/host'
 import { eventEmitter } from '@/utils/events'
 import { COMMON_EVENTS } from '@/enum/events'
 import { toast } from 'react-toastify'
@@ -138,25 +137,25 @@ export const request = {
       baseRequest(url, {
         ...config,
         method: 'get',
-        baseURL: BACKEND_API_URL
+        baseURL: ''
       }),
     post: <R = any>(url: string, config?: IRequestConfig<R>) =>
       baseRequest(url, {
         ...config,
         method: 'post',
-        baseURL: BACKEND_API_URL
+        baseURL: ''
       }),
     put: <R = any>(url: string, config?: IRequestConfig<R>) =>
       baseRequest(url, {
         ...config,
         method: 'put',
-        baseURL: BACKEND_API_URL
+        baseURL: ''
       }),
     delete: <R = any>(url: string, config?: IRequestConfig<R>) =>
       baseRequest(url, {
         ...config,
         method: 'delete',
-        baseURL: BACKEND_API_URL
+        baseURL: ''
       })
   }
 }

@@ -1,5 +1,3 @@
-import { EnumBondingState, EnumLaunchType } from '@/enum/bonding'
-
 export interface BondingItem {
   id: number
   onchain_id: string

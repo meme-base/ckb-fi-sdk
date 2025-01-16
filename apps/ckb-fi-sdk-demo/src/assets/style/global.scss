@@ -5,7 +5,7 @@
   font-weight: 400;
   box-sizing: border-box;
   color: #fff;
-  background: linear-gradient(320deg, #0e1d2c, #28273b) !important;
+  background: linear-gradient(320deg, #0e1d2c, #28273b);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,16 +15,14 @@
 
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
+  background-color: unset !important;
 }
 
 #app {
   position: relative;
   width: 100%;
   height: 100%;
-  max-width: 640px;
-  overflow-x: hidden;
-  overflow-y: auto;
   overscroll-behavior: none;
   margin: 0 auto;
   padding: 0 1rem;

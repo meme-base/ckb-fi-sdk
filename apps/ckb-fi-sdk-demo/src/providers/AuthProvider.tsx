@@ -6,10 +6,9 @@ import {
   ReactNode
 } from 'react'
 import { SignerType, SignerSignType } from '@ckb-ccc/connector-react'
-import { AuthTokenManager } from '@/request/authTokenManager'
+import { AuthManager } from '@/request/authManager'
 import Loading from '@/components/Loading'
 import { IUserProfile } from '@/types/module/user'
-import { HEADER_HEIGHT } from '@/constants/common'
 import { getUserInfo } from '@/apis/users'
 import { debounce } from '@mui/material'
 
@@ -55,7 +54,7 @@ export const useAuthProviderContext = () => {
 }
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const { contractVersion, accountInfo } = AuthTokenManager
+  const { contractVersion, accountInfo } = AuthManager
   const [version, setVersion] = useState('2')
   const [account, setAccount] = useState<IAccountInfo | null>(null)
   const [profile, setProfile] = useState<IUserProfile | null>(null)
@@ -76,7 +75,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   const handleSetContractVersion = async (version: string) => {
     setLoading(true)
     setVersion(version)
-    AuthTokenManager.setContractVersion(version)
+    AuthManager.setContractVersion(version)
     setTimeout(() => {
       setLoading(false)
     }, 500)
@@ -86,7 +85,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     _isFromFarcaster = false
   ) => {
     setAccount(data)
-    AuthTokenManager.setSession(data)
+    AuthManager.setSession(data)
     setIsLogin(true)
     setTimeout(() => {
       setLoading(false)
@@ -95,7 +94,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   const handleClearAccount = () => {
     setAccount(null)
     setProfile(null)
-    AuthTokenManager.clearSession()
+    AuthManager.clearSession()
     setIsLogin(false)
   }
 
@@ -118,7 +117,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     [accountInfo]
   )
 
-  if (loading) return <Loading height={`calc(100vh - ${HEADER_HEIGHT}px)`} />
+  if (loading) return <Loading height="100vh" />
 
   return (
     <AuthProviderContext.Provider

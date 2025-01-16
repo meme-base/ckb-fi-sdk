@@ -4,7 +4,7 @@ import { Stack, TextField, Typography, FormHelperText } from '@mui/material'
 import Uploader from '@/components/Upload/Uploader'
 import LoadingButton from '@mui/lab/LoadingButton'
 import IModal from '@/components/Modal'
-import { directLaunchBonding } from '@/apis/bonding'
+import { launchBonding } from '@/apis/bonding'
 import { BondingItem } from '@/types/module/bonding'
 import { IFormItem } from '@/types/module/common'
 import { EnumFileObjType } from '@/enum/common'
@@ -129,7 +129,7 @@ const ModalDirectLaunch = ({ show, onSuccess, onClose }: Props) => {
           icon_url: url,
           tokenized_url: formValues.tokenized_url.value.trim()
         }
-        const res = await directLaunchBonding({
+        const res = await launchBonding({
           bonding: params
         })
         toast.success('Launch successfully')

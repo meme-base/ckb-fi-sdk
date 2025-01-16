@@ -1,112 +1,120 @@
+import { joyIdPresign, joyIdLogin, launchBonding } from '../apis'
+import { BondingItem } from '../types/module/bonding'
+import { ReqLaunch } from '../types/request/bonding'
+import { toast } from 'react-toastify'
+
 export enum Enum_Env {
-  DEV = "dev",
-  PROD = "prod",
+  DEV = 'dev',
+  PROD = 'prod'
 }
-
 export interface I_BondingOptions {
-  env?: Enum_Env;
+  env?: Enum_Env
 }
-
+export interface I_SignMessageParams {
+  signer: any
+  ticket: string
+}
 export interface I_LoginParams {
-  address: string;
-  signatureText: string;
-  signature: string;
+  verify_type: string
+  internal_address: string
+  sign_response_data: any
+  ticket: string
 }
+export type I_LaunchParams = ReqLaunch
 
-export interface I_LaunchParams {
-  icon_url: string;
-  name: string;
-  symbol: string;
-  tweet_url: string;
-  description: string;
-}
+export const TOKEN_KEY = 'ckb-fi-sdk:user:token'
 
 export class Bonding {
-  private env: Enum_Env;
-  private baseUrl: string;
-  private token: string = "";
+  private env: Enum_Env = Enum_Env.PROD
+  private baseUrl: string
+  private token: string
 
   constructor(options: I_BondingOptions) {
-    this.env = options?.env || Enum_Env.PROD;
-    this.baseUrl =
-      this.env === Enum_Env.PROD
-        ? "https://api.ckb.fi/api/v1"
-        : "https://dev.api.ckb.fi/api/v1";
+    this.env = options.env!
+    this.baseUrl = `https://${this.env === Enum_Env.DEV ? 'dev.' : ''}api.ckb.fi/api/v1`
+    this.token = localStorage.getItem(TOKEN_KEY) || ''
   }
 
-  // 获取签名文本
-  async getSignatureText(): Promise<string> {
-    try {
-      const response = await fetch(`${this.baseUrl}/auth/signature_text`);
-      const data = await response.json();
-      if (data.code !== 0) {
-        throw new Error(data.message || "Failed to get signature text");
+  // 1.Get ticket
+  async getTicket(ckbAddress: string): Promise<string> {
+    const res = await joyIdPresign(
+      `${this.baseUrl}/auth_tokens/joyid_persign`,
+      ckbAddress
+    ).catch((err: any) => {
+      if (err instanceof Error) {
+        throw new Error(`Get signature text failed: ${err.message}`)
       }
-      return data.data.text;
-    } catch (error) {
-      throw new Error(`Get signature text failed: ${error.message}`);
+      throw new Error('Unknown error occurred while getting signature text')
+    })
+
+    const ticket = res.ticket
+
+    if (!ticket) {
+      toast.error('Failed to get ticket')
+      return ''
     }
+    console.log(ticket, 'ticket')
+
+    return ticket
   }
 
-  // 登录
+  // 2.Sign ticket using your current signer
+  async signMessage(params: I_SignMessageParams): Promise<string> {
+    const res = await params.signer
+      .signMessage(params.ticket)
+      .catch((err: any) => {
+        if (err instanceof Error) {
+          throw new Error(`Failed to sign message: ${err.message}`)
+        }
+        throw new Error('Failed to sign message')
+      })
+
+    if (!res) {
+      throw new Error('Failed to sign message')
+    }
+
+    console.log(res, 'signMessage')
+
+    return res
+  }
+
+  // 3.Login to ckb.fi
   async login(params: I_LoginParams): Promise<string> {
-    try {
-      const response = await fetch(`${this.baseUrl}/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          address: params.address,
-          signature_text: params.signatureText,
-          signature: params.signature,
-        }),
-      });
-
-      const data = await response.json();
-      if (data.code !== 0) {
-        throw new Error(data.message || "Login failed");
+    const res = await joyIdLogin(
+      `${this.baseUrl}/auth_tokens/joyid_login`,
+      params
+    ).catch(err => {
+      if (err instanceof Error) {
+        throw new Error(`Login failed: ${err.message}`)
       }
+      throw new Error('Unknown error occurred while login')
+    })
+    const token = res.token
+    this.token = token
+    localStorage.setItem(TOKEN_KEY, token)
 
-      this.token = data.data.token;
-      return this.token;
-    } catch (error) {
-      throw new Error(`Login failed: ${error.message}`);
-    }
+    console.log(token, 'token')
+    return token
   }
 
-  // 发射 Memecoin
-  async launch(params: I_LaunchParams): Promise<number> {
+  // 4.Launch memecoin
+  async launch(params: I_LaunchParams): Promise<BondingItem | undefined> {
     if (!this.token) {
-      throw new Error("Please login first");
+      toast.error('Please login first')
+      return
     }
 
-    try {
-      const response = await fetch(`${this.baseUrl}/bondings/direct_launch`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${this.token}`,
-        },
-        body: JSON.stringify({
-          bonding: {
-            icon_url: params.icon_url,
-            name: params.name,
-            symbol: params.symbol,
-            tokenized_url: params.tweet_url,
-            desc: params.description,
-          },
-        }),
-      });
-
-      const data = await response.json();
-      if (data.code !== 0) {
-        throw new Error(data.message || "Launch failed");
+    const res = await launchBonding(
+      `${this.baseUrl}/bondings/direct_launch`,
+      this.token,
+      params
+    ).catch((err: any) => {
+      if (err instanceof Error) {
+        throw new Error(`Login failed: ${err.message}`)
       }
+      throw new Error('Unknown error occurred while login')
+    })
 
-      return data.data.id;
-    } catch (error) {
-      throw new Error(`Launch failed: ${error.message}`);
-    }
+    return res
   }
 }

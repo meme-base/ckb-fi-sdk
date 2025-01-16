@@ -82,8 +82,8 @@ const useCccConnect = (option?: IUseCccConnnectOption) => {
       joyIdLogin({
         verify_type: 'ccc',
         internal_address: address,
-        sign_response_data: resSign,
-        ticket: resPreSign.ticket
+        ticket: resPreSign.ticket,
+        sign_response_data: resSign
       })
         .then(res => {
           handleSuccess({

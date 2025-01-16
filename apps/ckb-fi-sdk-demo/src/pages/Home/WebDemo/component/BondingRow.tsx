@@ -13,7 +13,7 @@ const BondingRow = ({ data }: { data: BondingItem }) => {
   return (
     <Stack
       component="li"
-      className="flex w-full justify-between items-center cursor-pointer p-2 pr-3 text-xs rounded bg-gray-900 hover:bg-gray-800"
+      className="flex w-full justify-between items-center cursor-pointer p-2 pr-3 text-xs rounded bg-gray-600 hover:bg-gray-700"
       onClick={handleClick}
     >
       <Stack width="100%" direction="row" alignItems="center" spacing={1}>

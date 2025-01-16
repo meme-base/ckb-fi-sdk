@@ -21,7 +21,13 @@ import { useEvent } from '@/hooks/useEvent'
 import useMedia from '@/hooks/useMedia'
 // import { PATH } from '@/constants/path'
 
-const ConnectButton = ({ sx = {} }: { sx?: SxProps }) => {
+const ConnectButton = ({
+  onlyAddress,
+  sx = {}
+}: {
+  onlyAddress?: boolean
+  sx?: SxProps
+}) => {
   const { isXs } = useMedia()
   const { loading, isLogin, profile, account, clearAccount } =
     useAuthProviderContext()

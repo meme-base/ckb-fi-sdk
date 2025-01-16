@@ -1,12 +1,14 @@
-.container-bonding {
+.sdk-demo-container {
   width: 100%;
-  display: flex;
-  min-height: 100%;
-  padding-bottom: 50px;
+  padding: 20px;
+  background: rgba(255, 195, 70, 0.1);
+  border-radius: 8px;
+  border: 1px solid #353535;
 
   .title {
     position: relative;
-    margin: 5rem 0 1rem;
+    margin-top: 1.4rem;
+    margin-bottom: 0.5rem;
     line-height: 1;
     font-weight: 700;
     span {
@@ -31,7 +33,7 @@
     padding: 12px 16px;
     line-height: 1.4;
     word-break: break-all;
-    white-space: pre;
+    white-space: pre-wrap;
     font-size: 12px;
     color: #ccc;
     border-radius: 8px;
@@ -50,13 +52,13 @@
     padding: 12px 16px;
     line-height: 1.4;
     word-break: break-all;
-    white-space: pre;
+    white-space: pre-line;
     font-size: 12px;
     color: inherit;
     resize: none;
     border-radius: 8px;
     transition: all 0.3s;
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.2);
     &:focus {
       outline: none;
       border-color: #1ba536;
@@ -107,6 +109,6 @@
     height: 28px;
     padding: 0 12px;
     color: #ccc;
-    background: #37393f;
+    background: #4f525b;
   }
 }

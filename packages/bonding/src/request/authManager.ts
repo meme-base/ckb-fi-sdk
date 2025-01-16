@@ -1,10 +1,17 @@
-import { IAccountInfo } from '@/providers/AuthProvider'
-
+export interface IAccountInfo {
+  token: string
+  chainId: number
+  signerType: any
+  signerSignType: any
+  walletName: string
+  address: string
+  ckbAddress: string
+}
 export const TOKEN_KEY = 'ckb-fi:user:token'
 export const CONTRACT_VERSION_KEY = 'ckb-fi:contract_version'
 export const ACCOUNT_INFO_KEY = 'ckb-fi:account'
 
-class AuthTokenManagerClass {
+class AuthManagerClass {
   token: string
   contractVersion: string // 合约版本 1 | 2，默认 2
   detailTmpVersion: string // 详情页使用接口中的 version 字段，优先级高于全局的 contractVersion，仅在详情页使用
@@ -24,12 +31,7 @@ class AuthTokenManagerClass {
     localStorage.setItem(TOKEN_KEY, token)
     localStorage.setItem(ACCOUNT_INFO_KEY, JSON.stringify(account_info))
   }
-  setContractVersion(version: string, isDetailTmpVersion = false) {
-    if (isDetailTmpVersion) {
-      this.detailTmpVersion = version
-      return
-    }
-
+  setContractVersion(version: string) {
     this.contractVersion = version
     localStorage.setItem(CONTRACT_VERSION_KEY, version)
   }
@@ -39,10 +41,9 @@ class AuthTokenManagerClass {
     this.token = ''
     this.accountInfo = null
 
-    // 这里注意是否能清除所有数据？
     localStorage.clear()
     sessionStorage.clear()
   }
 }
 
-export const AuthTokenManager = new AuthTokenManagerClass()
+export const AuthManager = new AuthManagerClass()

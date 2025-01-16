@@ -3,20 +3,19 @@
 </p>
 <h1 align="center">CKB-FI SDK</h1>
 
-
 The SDK for CKB-FI ecosystem.
 
 - Bonding Launch SDK
 
 ## 🎾 Demo
 
- - [CKB-FI SDK Demo](https://ckb-fi-sdk-test.vercel.com/)
+- [CKB-FI SDK Demo](https://ckb-fi-sdk-test.vercel.com/)
 
 <br/>
 
 ## 📒 Memo
 
--  xxx
+- xxx
 
 <br/>
 
@@ -25,24 +24,27 @@ The SDK for CKB-FI ecosystem.
 #### 1、UMD
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@ckb-fi/bonding@latest/dist/ckb-fi-bonding.umd.js" defer></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@ckb-fi/bonding@latest/dist/ckb-fi-bonding.umd.js"
+  defer
+></script>
 
 <script>
- window.onload = function () {
-  const CkbFiInstance = new CarvIdSDK.CarvId({
-    showWidget: true,
-    authorizeConfig: {
-      client_id: "0a17299349c4b3e57bc8c25581b01bd0ec80c279",
-      client_secret:
-        "871cc95ca5a54866492bb052e0d487799e21a5c5896b7cd2ecbe813876a4b286",
-      response_type: "code",
-      state: "test app state",
-      scope: "carv_id_basic_read email_basic_read evm_address_basic_read",
-      redirect_uri: "https://t.me/BabyChinBot/carv_id_demo"
-    }
-  });
-  console.log(CkbFiInstance, "CKB-FI SDK initialized");
-}
+  window.onload = function () {
+    const CkbFiInstance = new CarvIdSDK.CarvId({
+      showWidget: true,
+      authorizeConfig: {
+        client_id: '0a17299349c4b3e57bc8c25581b01bd0ec80c279',
+        client_secret:
+          '871cc95ca5a54866492bb052e0d487799e21a5c5896b7cd2ecbe813876a4b286',
+        response_type: 'code',
+        state: 'test app state',
+        scope: 'carv_id_basic_read email_basic_read evm_address_basic_read',
+        redirect_uri: 'https://t.me/BabyChinBot/carv_id_demo'
+      }
+    })
+    console.log(CkbFiInstance, 'CKB-FI SDK initialized')
+  }
 </script>
 ```
 
@@ -95,26 +97,27 @@ const carvIdInstance = new CarvId(Options: I_CarvIdOptions)
 
 ```ts
 // Start authorization process
-carvIdInstance.authenticateUser();
+carvIdInstance.authenticateUser()
 ```
 
 #### 🔹 openIdentityPage: () => void
 
 ```ts
 // Open CARV ID identity page
-carvIdInstance.openIdentityPage();
+carvIdInstance.openIdentityPage()
 ```
+
 #### 🔹 handleAuthCallback: Promise<I_AuthenticateResponse>
 
 ```ts
 // Callback triggered after authorization
 CkbFiInstance.handleAuthCallback().then((res: I_AuthenticateResponse) => {
   // {code: string, state: string}
-  console.log(res, "handleAuthCallback");
+  console.log(res, 'handleAuthCallback')
   if (res.code) {
-    console.log("Authorize success", res.code);
+    console.log('Authorize success', res.code)
   }
-});
+})
 ```
 
 <br/>
@@ -125,40 +128,40 @@ CkbFiInstance.handleAuthCallback().then((res: I_AuthenticateResponse) => {
 
 ```typescript
 interface I_CarvIdOptions {
-  env?: Enum_Env;
-  theme?: Enum_CarvIdTheme;
-  showWidget?: boolean;
-  widgetOptions?: I_CarvIdWidgetOptions;
-  authorizeConfig: I_CarvIdAuthorizeConfig;
-  onLoad?: (data: CarvId) => void;
-  onAuthSuccess?: (data: I_AuthenticateResponse) => void;
-  onAuthFailed?: (data: I_AuthenticateResponse) => void;
+  env?: Enum_Env
+  theme?: Enum_CarvIdTheme
+  showWidget?: boolean
+  widgetOptions?: I_CarvIdWidgetOptions
+  authorizeConfig: I_CarvIdAuthorizeConfig
+  onLoad?: (data: CarvId) => void
+  onAuthSuccess?: (data: I_AuthenticateResponse) => void
+  onAuthFailed?: (data: I_AuthenticateResponse) => void
 }
 ```
 
-| Field            | Description                                            | Type                                   | Default                |
-| ---------------- | ------------------------------------------------------ | -------------------------------------- | ---------------------- |
-| env              | Environment                                            | Enum_Env                               | Enum_Env.PROD           |
-| theme            | Theme mode                                             | Enum_CarvIdTheme                       | Enum_CarvIdTheme.LIGHT |
-| showWidget       | Show widget icon                                       | Boolean                                | false                  |
-| widgetOptions    | Widget options                                         | I_CarvIdWidgetOptions                  | undefined              |
-| authorizeConfig  | Configuration for authorization                        | I_CarvIdAuthorizeConfig                | undefined              |
-| onLoad           | Callback that triggered after SDK initialized          | (data: CarvId) => void                 | undefined              |
-| onAuthSuccess    | Callback that triggered after authorization successful | (data: I_AuthenticateResponse) => void | undefined              |
-| onAuthFailed     | Callback that triggered after authorization failed     | (data: I_AuthenticateResponse) => void | undefined              |
+| Field           | Description                                            | Type                                   | Default                |
+| --------------- | ------------------------------------------------------ | -------------------------------------- | ---------------------- |
+| env             | Environment                                            | Enum_Env                               | Enum_Env.PROD          |
+| theme           | Theme mode                                             | Enum_CarvIdTheme                       | Enum_CarvIdTheme.LIGHT |
+| showWidget      | Show widget icon                                       | Boolean                                | false                  |
+| widgetOptions   | Widget options                                         | I_CarvIdWidgetOptions                  | undefined              |
+| authorizeConfig | Configuration for authorization                        | I_CarvIdAuthorizeConfig                | undefined              |
+| onLoad          | Callback that triggered after SDK initialized          | (data: CarvId) => void                 | undefined              |
+| onAuthSuccess   | Callback that triggered after authorization successful | (data: I_AuthenticateResponse) => void | undefined              |
+| onAuthFailed    | Callback that triggered after authorization failed     | (data: I_AuthenticateResponse) => void | undefined              |
 
 #### 🔸 I_CarvIdWidgetOptions
 
-``` typescript
+```typescript
 interface I_CarvIdWidgetOptions {
-  theme?: Enum_CarvIdTheme;
-  size?: string;
-  className?: string;
-  draggable?: boolean;
-  watchResize?: boolean;
-  rememberPosition?: boolean;
-  placement?: Enum_CarvIdIconPlacement;
-  offset?: I_CarvIdIconPlacementOffset;
+  theme?: Enum_CarvIdTheme
+  size?: string
+  className?: string
+  draggable?: boolean
+  watchResize?: boolean
+  rememberPosition?: boolean
+  placement?: Enum_CarvIdIconPlacement
+  offset?: I_CarvIdIconPlacementOffset
 }
 ```
 
@@ -209,54 +212,3 @@ This Turborepo has some additional tools already setup for you:
 - [Prettier](https://prettier.io) for code formatting
 
 <br/>
-
-
-Qin Hua, [Jan 9, 2025 at 16:32:09]:
-Hello, UTXO Golbal team. I'm front-end developer from the CKB-FI. 
-Regarding the matter of integrating the SDK, I'd like to discuss some issues with you.
-
-
-The main function of this SDK is to launch memecoins based on the tweets sniffed in your Chrome plugin. The launching function has already been implemented in ckb.fi. To integrate it into your browser plugin, I need to do the following things:
-
-1、Obtain the currently logged-in wallet address;
-2、Call the interface /api/v1/auth_tokens/joyid_persign to get the data to be signed;
-3、Use your wallet to sign the data to be signed and obtain the signature result;
-4、Call /api/v1/auth_tokens/joyid_login to log in to the ckb.fi account system and get the token（token needs to be stored on your side）;
-5、Based on the content of the tweets you've sniffed, obtain the parameters required for the launch, and call the /api/v1/bondings/direct_launch interface to launch. After the launch, the link of the token on ckb.fi will be returned, such as: https://ckb.fi/detail/123.
-{
-    name: string     // token name
-    symbol: string     // token symbol
-    icon_url: string     // token icon
-    desc: string     // token description
-    tokenized_url: string     // tweet url
-  }
-The icon_url of the tokens need to be uploaded and obtained through the interface /api/v1/images/presigned to our image hosting service.
-
-
-@trongdth 
-Since the operations of obtaining the wallet address and signing both require the capabilities on your side, joint debugging with you is necessary.
-I wonder if it's convenient for you to provide us with the development permissions for the browser plugin so that we can conduct debugging and development locally. Will there be CORS issues when calling third-party interfaces in the Chrome browser?Qin Hua, [Jan 9, 2025 at 16:32:09]:
-Hello, UTXO Golbal team. I'm front-end developer from the CKB-FI. 
-Regarding the matter of integrating the SDK, I'd like to discuss some issues with you.
-
-
-The main function of this SDK is to launch memecoins based on the tweets sniffed in your Chrome plugin. The launching function has already been implemented in ckb.fi. To integrate it into your browser plugin, I need to do the following things:
-
-1、Obtain the currently logged-in wallet address;
-2、Call the interface /api/v1/auth_tokens/joyid_persign to get the data to be signed;
-3、Use your wallet to sign the data to be signed and obtain the signature result;
-4、Call /api/v1/auth_tokens/joyid_login to log in to the ckb.fi account system and get the token（token needs to be stored on your side）;
-5、Based on the content of the tweets you've sniffed, obtain the parameters required for the launch, and call the /api/v1/bondings/direct_launch interface to launch. After the launch, the link of the token on ckb.fi will be returned, such as: https://ckb.fi/detail/123.
-{
-    name: string     // token name
-    symbol: string     // token symbol
-    icon_url: string     // token icon
-    desc: string     // token description
-    tokenized_url: string     // tweet url
-  }
-The icon_url of the tokens need to be uploaded and obtained through the interface /api/v1/images/presigned to our image hosting service.
-
-
-@trongdth 
-Since the operations of obtaining the wallet address and signing both require the capabilities on your side, joint debugging with you is necessary.
-I wonder if it's convenient for you to provide us with the development permissions for the browser plugin so that we can conduct debugging and development locally. Will there be CORS issues when calling third-party interfaces in the Chrome browser?
