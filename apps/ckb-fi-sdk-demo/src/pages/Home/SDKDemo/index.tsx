@@ -277,7 +277,7 @@ const SDKDemo = () => {
                 <LoadingButton
                   id="btn-launch"
                   loading={loading}
-                  // disabled={!token || !params }
+                  disabled={!token || !params}
                   onClick={handleLaunch}
                 >
                   🚀 Launch
