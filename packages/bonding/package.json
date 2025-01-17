@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/meme-base/ckb-fi-sdk.git"
   },
-  "homepage": "https://sdk.ckb.fi",
+  "homepage": "https://ckb.fi",
   "keywords": [
     "ckb",
     "ckb-fi",
@@ -15,10 +15,8 @@
     "sdk"
   ],
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup --dts",
-    "prepublishOnly": "npm run build",
-    "publish": "npm publish",
+    "build": "tsc && vite build",
+    "publish": "npm run build && npm publish",
     "lint": "eslint \"**/*.ts\""
   },
   "exports": {

@@ -1,8 +1,11 @@
 import { request } from '../request'
-import { ReqUploadImage, ResUploadImage } from '../types/request/common'
-import { ReqJoyIdLogin } from '../types/request/users'
-import { BondingItem } from '../types/module/bonding'
-import { ReqLaunch } from '../types/request/bonding'
+import {
+  ReqJoyIdLogin,
+  BondingItem,
+  I_LaunchParams,
+  ReqUploadImage,
+  ResUploadImage
+} from '../types'
 
 export function joyIdPresign(url: string, address: string) {
   return request.api.post<{ ticket: string }>(url, {
@@ -22,7 +25,11 @@ export function uploadImage(url: string, data: ReqUploadImage) {
   })
 }
 
-export function launchBonding(url: string, token: string, data: ReqLaunch) {
+export function launchBonding(
+  url: string,
+  token: string,
+  data: I_LaunchParams
+) {
   return request.api.post<BondingItem>(url, {
     data,
     headers: {

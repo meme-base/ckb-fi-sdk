@@ -1,36 +1,23 @@
 import { joyIdPresign, joyIdLogin, launchBonding } from '../apis'
-import { BondingItem } from '../types/module/bonding'
-import { ReqLaunch } from '../types/request/bonding'
 import { toast } from 'react-toastify'
-
-export enum Enum_Env {
-  DEV = 'dev',
-  PROD = 'prod'
-}
-export interface I_BondingOptions {
-  env?: Enum_Env
-}
-export interface I_SignMessageParams {
-  signer: any
-  ticket: string
-}
-export interface I_LoginParams {
-  verify_type: string
-  internal_address: string
-  sign_response_data: any
-  ticket: string
-}
-export type I_LaunchParams = ReqLaunch
+import {
+  Enum_Env,
+  BondingItem,
+  I_BondingOptions,
+  I_SignMessageParams,
+  I_LoginParams,
+  I_LaunchParams
+} from '../types'
 
 export const TOKEN_KEY = 'ckb-fi-sdk:user:token'
 
 export class Bonding {
-  private env: Enum_Env = Enum_Env.PROD
+  private env: Enum_Env
   private baseUrl: string
   private token: string
 
-  constructor(options: I_BondingOptions) {
-    this.env = options.env!
+  constructor(options?: I_BondingOptions) {
+    this.env = options?.env || Enum_Env.PROD
     this.baseUrl = `https://${this.env === Enum_Env.DEV ? 'dev.' : ''}api.ckb.fi/api/v1`
     this.token = localStorage.getItem(TOKEN_KEY) || ''
   }

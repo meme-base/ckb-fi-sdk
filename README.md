@@ -5,7 +5,7 @@
 
 The SDK for CKB-FI ecosystem.
 
-- Bonding Launch SDK
+- Bonding SDK
 
 ## 🎾 Demo
 
@@ -34,7 +34,7 @@ The SDK for CKB-FI ecosystem.
 #### 2、ES Module
 
 ```bash
-pnpm add @ckb-fi/bonding
+npm i @ckb-fi/bonding -S
 ```
 
 ```typescript
@@ -106,6 +106,12 @@ console.log('Login success', token)
 const data = BondingInstance.launch(params: I_LaunchParams)
 console.log('Launch success', data)
 ```
+
+<br/>
+
+## 🛠️ Development
+
+Execute `pnpm run dev` to start the demo project in the `/apps/ckb fi sdk demo` directory.
 
 <br/>
 

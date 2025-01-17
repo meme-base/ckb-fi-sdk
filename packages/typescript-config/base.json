@@ -18,6 +18,7 @@
     "moduleResolution": "bundler",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "strict": true,
+    "noEmit": true,
     "sourceMap": false,
     "skipLibCheck": true,
     "importHelpers": true,
@@ -26,7 +27,6 @@
     "skipDefaultLibCheck": true,
     "preserveWatchOutput": true,
     "noUnusedParameters": false,
-    "emitDecoratorMetadata": true,
     "types": ["node", "vite/client"],
     "plugins": [
       {

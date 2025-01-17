@@ -1,3 +1,28 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export interface ReqJoyIdLogin {
+  verify_type: string
+  internal_address: string
+  sign_response_data: any
+  ticket: string
+}
+
+export interface ReqUploadImage {
+  obj_type: 'bondings'
+  file_content_type: string
+  // file_content_type:
+  //   | 'image/jpeg'
+  //   | 'image/png'
+  //   | 'image/gif'
+  //   | 'image/bmp'
+  //   | 'image/tiff'
+  //   | 'image/webp'
+}
+
+export interface ResUploadImage {
+  presigned_url: string
+  url: string
+}
+
 export interface BondingItem {
   id: number
   onchain_id: string
@@ -46,4 +71,35 @@ export interface IBondingExtraInfo {
   proposal_tweet_id: string
   proposal_content: string
   proposal_creator_address: string
+}
+
+export enum Enum_Env {
+  DEV = 'dev',
+  PROD = 'prod'
+}
+
+export interface I_BondingOptions {
+  env?: Enum_Env
+}
+
+export interface I_SignMessageParams {
+  signer: any
+  ticket: string
+}
+
+export interface I_LoginParams {
+  verify_type: string
+  internal_address: string
+  sign_response_data: any
+  ticket: string
+}
+
+export interface I_LaunchParams {
+  bonding: {
+    name: string
+    symbol: string
+    icon_url: string
+    desc: string
+    tokenized_url: string
+  }
 }
