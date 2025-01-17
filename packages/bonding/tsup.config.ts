@@ -1,8 +1,8 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from 'tsup'
 
 export default defineConfig({
-  name: "@ckb-fi/bonding",
-  entry: ["./src/ckb-fi-bonding.ts"],
+  name: '@ckb-fi/bonding',
+  entry: ['./src/ckb-fi-bonding.ts'],
   minify: true,
   minifySyntax: true,
   minifyWhitespace: true,
@@ -10,19 +10,21 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   clean: true,
-  platform: "neutral",
+  platform: 'neutral',
   // @ts-ignore
-  format: ["cjs", "esm", "umd"],
-  globalName: "CKBFiBonding",
+  format: ['cjs', 'esm', 'umd'],
+  globalName: 'CKBFiBonding',
   // legacyOutput: true,
+  // @ts-ignore
   outExtension({ format }) {
     return {
       js:
-        { cjs: ".cjs", esm: ".mjs", umd: ".umd.js", iife: ".iife.js" }[
+        // @ts-ignore
+        { cjs: '.cjs', esm: '.mjs', umd: '.umd.js', iife: '.iife.js' }[
           format
-        ] || `.${format}.js`,
-    };
+        ] || `.${format}.js`
+    }
   },
-  publicDir: "./public",
-  outDir: "./dist",
-});
+  publicDir: './public',
+  outDir: './dist'
+})

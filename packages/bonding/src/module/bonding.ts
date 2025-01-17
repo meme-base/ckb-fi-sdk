@@ -35,7 +35,7 @@ export class Bonding {
     this.token = localStorage.getItem(TOKEN_KEY) || ''
   }
 
-  // 1.Get ticket
+  // 1.Get ticket by address
   async getTicket(ckbAddress: string): Promise<string> {
     const res = await joyIdPresign(
       `${this.baseUrl}/auth_tokens/joyid_persign`,
@@ -58,8 +58,8 @@ export class Bonding {
     return ticket
   }
 
-  // 2.Sign ticket using your current signer
-  async signMessage(params: I_SignMessageParams): Promise<string> {
+  // 2.Sign ticket using your current provider
+  async signMessage(params: I_SignMessageParams): Promise<any> {
     const res = await params.signer
       .signMessage(params.ticket)
       .catch((err: any) => {

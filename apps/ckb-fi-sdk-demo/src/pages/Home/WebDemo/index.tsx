@@ -7,9 +7,9 @@ import ModalDirectLaunch from './component/ModalDirectLaunch'
 import { BondingItem } from '@/types/module/bonding'
 import BondingRow from './component/BondingRow'
 import NoData from '@/components/NoData'
-import { HOST, HOST_CONFIG } from '@/config/host'
-import { IS_DEV_ENV } from '@/config/env'
+import { HOST_CONFIG } from '@/config/host'
 import { PATH } from '@/constants/path'
+import { APP_ENV } from '@/config/env'
 import { toast } from 'react-toastify'
 import './index.css'
 
@@ -55,7 +55,7 @@ const WebDemo = () => {
         <Stack>
           <Stack direction="row" justifyContent="space-between">
             <Typography variant="h3" className="title">
-              Web Demo <span>{IS_DEV_ENV ? '@dev' : ''}</span>
+              Web Demo <span>@{APP_ENV}</span>
             </Typography>
             <Button id="btn-reset" onClick={handleReset}>
               ↪️ Reset
@@ -82,7 +82,7 @@ const WebDemo = () => {
           <Stack className="step-col" spacing={1} pl={3}>
             <Stack spacing={1}>
               <Stack direction="row" alignItems="center" spacing={1}>
-                <Typography>Step 1</Typography>{' '}
+                <Typography flexShrink={0}>Step 1</Typography>{' '}
                 <Typography
                   variant="body1"
                   sx={{
@@ -101,7 +101,7 @@ const WebDemo = () => {
               <ConnectButton />
             </Stack>
             <Stack spacing={1}>
-              <Typography>Step 2</Typography>
+              <Typography flexShrink={0}>Step 2</Typography>
               <Stack spacing={1}>
                 <Button
                   id="btn-launch"

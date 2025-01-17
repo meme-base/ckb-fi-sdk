@@ -3,20 +3,13 @@
 </p>
 <h1 align="center">CKB-FI SDK</h1>
 
-
 The SDK for CKB-FI ecosystem.
 
 - Bonding Launch SDK
 
 ## 🎾 Demo
 
- - [CKB-FI SDK Demo](https://ckb-fi-sdk-test.vercel.com/)
-
-<br/>
-
-<!-- ## 📒 Memo
-
--  xxx
+- [CKB-FI SDK Demo](https://ckb-fi-sdk-test.vercel.com/)
 
 <br/>
 
@@ -25,24 +18,16 @@ The SDK for CKB-FI ecosystem.
 #### 1、UMD
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@ckb-fi/bonding@latest/dist/ckb-fi-bonding.umd.js" defer></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@ckb-fi/bonding@latest/dist/ckb-fi-bonding.umd.js"
+  defer
+></script>
 
 <script>
- window.onload = function () {
-  const CkbFiInstance = new CarvIdSDK.CarvId({
-    showWidget: true,
-    authorizeConfig: {
-      client_id: "0a17299349c4b3e57bc8c25581b01bd0ec80c279",
-      client_secret:
-        "871cc95ca5a54866492bb052e0d487799e21a5c5896b7cd2ecbe813876a4b286",
-      response_type: "code",
-      state: "test app state",
-      scope: "carv_id_basic_read email_basic_read evm_address_basic_read",
-      redirect_uri: "https://t.me/BabyChinBot/carv_id_demo"
-    }
-  });
-  console.log(CkbFiInstance, "CKB-FI SDK initialized");
-}
+  window.onload = function () {
+    const BondingInstance = new Bonding()
+    console.log(BondingInstance, 'CKB-FI Bonding SDK initialized')
+  }
 </script>
 ```
 
@@ -54,126 +39,75 @@ pnpm add @ckb-fi/bonding
 
 ```typescript
 import {
-  CarvId,
-  Enum_Env,
-  Enum_CarvIdTheme,
-  Enum_CarvIdIconPlacement,
-} from "@ckb-fi/ckb-fi-sdk";
+  Bonding,
+  Enum_Env
+} from "@ckb-fi/bonding";
 
-window.onload = function() => {
-  const CkbFiInstance = new CarvId({
-    theme: Enum_CarvIdTheme.LIGHT,
-    showWidget: true,
-    widgetOptions: {
-      size: "60px",
-      placement: Enum_CarvIdIconPlacement.BOTTOM_RIGHT
-    },
-    onLoad: (data) => {
-      console.log("onLoad", data);
-    },
-    onAuthSuccess: (data) => {
-      console.log("onAuthSuccess", data);
-    },
-    onAuthFailed: (data) => {
-      console.log("onAuthFailed", data);
-    }
-  });
-  console.log(CkbFiInstance, "CKB-FI SDK initialized");
-}
-```
-
-<br/>
-
-## 🧩 Methods
-
-```typescript
-// Initialize
-const carvIdInstance = new CarvId(Options: I_CarvIdOptions)
-```
-
-#### 🔹 authenticateUser: () => void
-
-```ts
-// Start authorization process
-carvIdInstance.authenticateUser();
-```
-
-#### 🔹 openIdentityPage: () => void
-
-```ts
-// Open CARV ID identity page
-carvIdInstance.openIdentityPage();
-```
-#### 🔹 handleAuthCallback: Promise<I_AuthenticateResponse>
-
-```ts
-// Callback triggered after authorization
-CkbFiInstance.handleAuthCallback().then((res: I_AuthenticateResponse) => {
-  // {code: string, state: string}
-  console.log(res, "handleAuthCallback");
-  if (res.code) {
-    console.log("Authorize success", res.code);
+  window.onload = function () {
+    const BondingInstance = new Bonding()
+    console.log(BondingInstance, 'CKB-FI Bonding SDK initialized')
   }
-});
+}
 ```
 
 <br/>
 
 ## 🛠️ Options
 
-#### 🔸 I_CarvIdOptions
+#### 🔸 I_BondingOptions
 
 ```typescript
-interface I_CarvIdOptions {
-  env?: Enum_Env;
-  theme?: Enum_CarvIdTheme;
-  showWidget?: boolean;
-  widgetOptions?: I_CarvIdWidgetOptions;
-  authorizeConfig: I_CarvIdAuthorizeConfig;
-  onLoad?: (data: CarvId) => void;
-  onAuthSuccess?: (data: I_AuthenticateResponse) => void;
-  onAuthFailed?: (data: I_AuthenticateResponse) => void;
+interface I_BondingOptions {
+  env?: Enum_Env
 }
 ```
 
-| Field            | Description                                            | Type                                   | Default                |
-| ---------------- | ------------------------------------------------------ | -------------------------------------- | ---------------------- |
-| env              | Environment                                            | Enum_Env                               | Enum_Env.PROD           |
-| theme            | Theme mode                                             | Enum_CarvIdTheme                       | Enum_CarvIdTheme.LIGHT |
-| showWidget       | Show widget icon                                       | Boolean                                | false                  |
-| widgetOptions    | Widget options                                         | I_CarvIdWidgetOptions                  | undefined              |
-| authorizeConfig  | Configuration for authorization                        | I_CarvIdAuthorizeConfig                | undefined              |
-| onLoad           | Callback that triggered after SDK initialized          | (data: CarvId) => void                 | undefined              |
-| onAuthSuccess    | Callback that triggered after authorization successful | (data: I_AuthenticateResponse) => void | undefined              |
-| onAuthFailed     | Callback that triggered after authorization failed     | (data: I_AuthenticateResponse) => void | undefined              |
+| Field | Description | Type     | Default       |
+| ----- | ----------- | -------- | ------------- |
+| env   | Environment | Enum_Env | Enum_Env.PROD |
 
-#### 🔸 I_CarvIdWidgetOptions
-
-``` typescript
-interface I_CarvIdWidgetOptions {
-  theme?: Enum_CarvIdTheme;
-  size?: string;
-  className?: string;
-  draggable?: boolean;
-  watchResize?: boolean;
-  rememberPosition?: boolean;
-  placement?: Enum_CarvIdIconPlacement;
-  offset?: I_CarvIdIconPlacementOffset;
-}
+```typescript
+// Initialize
+const BondingInstance = new Bonding(Options:I_BondingOptions)
 ```
 
-| Field            | Description                     | Type                        | Default                                      |
-| ---------------- | ------------------------------- | --------------------------- | -------------------------------------------- |
-| theme            | Theme mode                      | Enum_CarvIdTheme            | Enum_CarvIdTheme.LIGHT                       |
-| size             | Icon size                       | String                      | "48px"                                       |
-| placement        | Icon placement                  | Enum_CarvIdIconPlacement    | Enum_CarvIdIconPlacement.BOTTOM_RIGHT        |
-| offset           | The offset config for placement | I_CarvIdIconPlacementOffset | { left: 20, right: 20, top: 40, bottom: 60 } |
-| className        | The class name of widget        | String                      | ""                                           |
-| draggable        | Enable drag interaction         | Boolean                     | true                                         |
-| watchResize      | Watch the resize event          | Boolean                     | true                                         |
-| rememberPosition | Remember icon position          | Boolean                     | true                                         |
+<br/>
 
-<br/> -->
+## 🧩 Methods
+
+#### 🔹 getTicket: (address: string) => Promise<string>
+
+```ts
+// Get ticket by address
+const ticket = BondingInstance.getTicket('ckb...')
+console.log('GetTicket success', ticket)
+```
+
+#### 🔹 signMessage: (params: I_SignMessageParams) => Promise<any>
+
+```ts
+// Sign ticket using your current provider
+const resSign = BondingInstance.signMessage(params)
+console.log('SignMessage success', resSign)
+```
+
+#### 🔹 login: (params: I_LoginParams) => Promise<string>
+
+```ts
+// Login to ckb.fi
+const token = BondingInstance.login(params)
+console.log('Login success', token)
+```
+
+#### 🔹 launch: (params: I_LaunchParams) => Promise<BondingItem | undefined>
+
+```ts
+// Launch memecoin
+const data = BondingInstance.launch(params: I_LaunchParams)
+console.log('Launch success', data)
+```
+
+<br/>
 
 ## 🧿 Turborepo
 

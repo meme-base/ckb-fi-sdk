@@ -133,8 +133,12 @@ export const customThemeOptions: ThemeOptions = {
     values: {
       xs: 0,
       sm: 600,
+      w728: 728,
       md: 900,
+      w1024: 1024,
       lg: 1200,
+      w1280: 1280,
+      w1440: 1440,
       xl: 1500
     }
   },

@@ -6,17 +6,17 @@ import axios, {
   CanceledError
 } from 'axios'
 import { AuthManager } from './authManager'
-import { eventEmitter } from '@/utils/events'
-import { COMMON_EVENTS } from '@/enum/events'
+import { eventEmitter } from '../utils/events'
+import { COMMON_EVENTS } from '../enum/events'
 import { toast } from 'react-toastify'
 import qs from 'qs'
 
 export interface IRequestConfig<R> extends AxiosRequestConfig {
-  customHeaders?: boolean // 为 true 时使用业务中传入的 headers
-  rawResponse?: boolean // 为 true 时返回完整的响应数据方便前端判断
-  noToast?: boolean // 为 true 时不弹出 toast
-  withCredentials?: boolean // 是否携带 cookie
-  customResponse?: (data: AxiosResponse) => R // 自定义响应处理
+  customHeaders?: boolean // When true, use the headers passed from user side
+  rawResponse?: boolean // When true, return complete response data to facilitate front-end judgment
+  noToast?: boolean // show toast or not
+  withCredentials?: boolean // carry cookies or not
+  customResponse?: (data: AxiosResponse) => R // customize response
 }
 
 const instance = axios.create({ timeout: 200000 })
@@ -34,16 +34,16 @@ async function baseRequest<R = any>(url: string, config?: IRequestConfig<R>) {
         }
   }
 
-  // 统一带上 chain_id
+  // add `chain_id` into params
   if (!config.params) {
     config.params = {}
   }
-  config.params.chain_id = 0 // 当前网络 id
+  config.params.chain_id = 0 // chain id
 
   const currentVersion =
     (/\/detail(\/.+)?/.test(window.location.pathname)
       ? AuthManager.detailTmpVersion
-      : AuthManager.contractVersion) || '2' // 合约版本 1 | 2，默认 2，详情页使用接口中的 version 字段
+      : AuthManager.contractVersion) || '2' // contract version 1 | 2，default 2
 
   // console.log(
   //   `isDetailPage: ${/\/detail(\/.+)?/.test(window.location.pathname)}`,
@@ -160,7 +160,7 @@ export const request = {
   }
 }
 /**
- * 普通的数据结构
+ * Normal response structure
  */
 export interface PlainResponse<T> {
   code: number
@@ -170,7 +170,7 @@ export interface PlainResponse<T> {
 }
 
 /**
- * 带分页的数据结构
+ * Pagination response structure
  */
 export interface PageResponse<T> {
   code: number
@@ -180,7 +180,7 @@ export interface PageResponse<T> {
 }
 
 /**
- * 分页参数
+ * Pagination params
  */
 export interface IPagerParams {
   page: number
@@ -189,7 +189,7 @@ export interface IPagerParams {
 }
 
 /**
- * 分页结构
+ * Pagination structure
  */
 export interface IPagerInfo {
   current_page: number

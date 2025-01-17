@@ -4,10 +4,3 @@ export enum EnumFileObjType {
   COMMENTS = 'comments',
   BONDINGS = 'bondings'
 }
-
-export enum EnumEntityCategory {
-  TOPIC = 'topic',
-  PROPOSAL = 'proposal',
-  Bonding = 'Bonding',
-  TOKEN = 'token'
-}

@@ -5,9 +5,9 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import { useAuthProviderContext } from '@/providers/AuthProvider'
 import ConnectButton from '@/components/ConnectButton/Index'
 import { Bonding, I_LaunchParams } from '@ckb-fi/bonding'
-import { APP_ENV, IS_DEV_ENV } from '@/config/env'
 import { useApp } from '@/providers/AppProvider'
 import { PATH } from '@/constants/path'
+import { APP_ENV } from '@/config/env'
 import { toast } from 'react-toastify'
 import './index.css'
 
@@ -55,7 +55,6 @@ const SDKDemo = () => {
     })
 
     setToken(token)
-    toast.success('Login successfully')
   }
   const handleLaunch = async () => {
     try {
@@ -76,9 +75,9 @@ const SDKDemo = () => {
     }
   }
   const handleReset = () => {
-    // setTicket('')
-    // setToken('')
-    // setResSignature('')
+    setTicket('')
+    setToken('')
+    setResSignature('')
     setResLaunch('')
     setLink('')
     setLoading(false)
@@ -101,7 +100,7 @@ const SDKDemo = () => {
       <Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="h3" className="title">
-            SDK Demo <span>{IS_DEV_ENV ? '@dev' : ''}</span>
+            SDK Demo <span>@{APP_ENV}</span>
           </Typography>
           <Button id="btn-reset" onClick={handleReset}>
             ↪️ Reset
@@ -191,7 +190,7 @@ const SDKDemo = () => {
                   color: 'rgba(255,255,255,0.6)'
                 }}
               >
-                Sign the ticket using your wallet
+                Sign the ticket using your provider
               </Typography>
               {(resSignature || token) && (
                 <CheckCircleIcon sx={{ fontSize: 16, color: 'success.main' }} />
@@ -244,7 +243,7 @@ const SDKDemo = () => {
           <Stack spacing={1}>
             <Stack spacing={1}>
               <Stack direction="row" alignItems="center" spacing={1}>
-                <Typography flexShrink={0}>Step 5</Typography>
+                <Typography flexShrink={0}>Step 5:</Typography>
                 {link && (
                   <CheckCircleIcon
                     sx={{ fontSize: 16, color: 'success.main' }}
@@ -262,7 +261,14 @@ const SDKDemo = () => {
                 needs to upload images and obtain URLs by yourself, which can be
                 referred to:
                 <br />
-                <b>/apps/ckb-fi-sdk-demo/src/components/Upload/Uploader.tsx</b>
+                <b>
+                  <Link
+                    target="_blank"
+                    href="https://github.com/meme-base/ckb-fi-sdk/blob/main/apps/ckb-fi-sdk-demo/src/components/Upload/Uploader.tsx"
+                  >
+                    /apps/ckb-fi-sdk-demo/src/components/Upload/Uploader.tsx
+                  </Link>
+                </b>
               </Typography>
             </Stack>
             <Stack spacing={1}>

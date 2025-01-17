@@ -1,8 +1,7 @@
-import { LoadingButtonProps } from '@mui/lab'
 import { Theme } from '@mui/material'
 
 export default function LoadingButton(theme: Theme) {
-  const rootStyle = (ownerState: LoadingButtonProps) => {
+  const rootStyle = (ownerState: any) => {
     const { variant } = ownerState
     const containedVariant = variant === 'contained'
     const outlinedVariant = variant === 'outlined'
@@ -52,8 +51,7 @@ export default function LoadingButton(theme: Theme) {
         }
       ],
       styleOverrides: {
-        root: ({ ownerState }: { ownerState: LoadingButtonProps }) =>
-          rootStyle(ownerState),
+        root: ({ ownerState }: { ownerState: any }) => rootStyle(ownerState),
         loadingIndicatorStart: {
           left: 14
         },

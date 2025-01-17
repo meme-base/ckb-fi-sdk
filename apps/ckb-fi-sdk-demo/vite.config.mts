@@ -49,7 +49,7 @@ export default ({ mode, command, isSsrBuild }: ConfigEnv) => {
     },
     build: {
       assetsInlineLimit: 0, // 兼容 svg 文件引入
-      sourcemap: mode === 'prod' ? 'hidden' : false, // 使用 Sentry 时打开（非本地环境时）
+      sourcemap: false,
       chunkSizeWarningLimit: 1500, // 文件超过该大小会有警告信息（视具体情况设置）
       commonjsOptions: {
         strictRequires: true
