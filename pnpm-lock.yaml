@@ -154,8 +154,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/assets
       '@ckb-fi/bonding':
-        specifier: 0.0.1-beta.2
-        version: 0.0.1-beta.2
+        specifier: workspace:*
+        version: link:../../packages/bonding
       '@ckb-fi/utils':
         specifier: workspace:*
         version: link:../../packages/utils
@@ -552,9 +552,6 @@ packages:
 
   '@ckb-ccc/xverse@1.0.11':
     resolution: {integrity: sha512-X/RF2VXMiaMIK19kOny5g01smqb5gMnU5kIGT8UkjYCiyiy7MAsLKyAebLTJvWeYOmTOGXmMXbCMqQKfYRPQ+w==}
-
-  '@ckb-fi/bonding@0.0.1-beta.2':
-    resolution: {integrity: sha512-Vxs7VrRlAjL/RXmbe5cBeeAZpm2Vq1M7PmLwRLso1cLly3cEJ2tUBJpuALWCSlhZfztYSnGCBDaY386kroBCKw==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -4762,13 +4759,6 @@ snapshots:
       - typescript
       - utf-8-validate
       - zod
-
-  '@ckb-fi/bonding@0.0.1-beta.2':
-    dependencies:
-      axios: 1.7.9
-      events: 3.3.0
-    transitivePeerDependencies:
-      - debug
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
