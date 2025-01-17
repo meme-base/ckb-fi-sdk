@@ -17,7 +17,8 @@ const defaultParams: I_LaunchParams = {
     name: 'The Banana Game',
     symbol: 'Banana',
     desc: 'We are THE 🍌 game',
-    icon_url: 'https://img.icons8.com/ios/452/ethereum.png',
+    icon_url:
+      'https://img.memebase.co/bondings/f40af00c-f33d-409a-b940-1d4592afcf2f.png',
     tokenized_url: 'https://x.com/thebananagameee/status/1816759320526356680'
   }
 }
