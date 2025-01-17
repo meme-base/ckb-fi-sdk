@@ -2,7 +2,7 @@
 
 ## 🎾 Demo
 
-- [CKB-FI SDK Demo](https://ckb-fi-sdk-test.vercel.com/)
+- [CKB-FI SDK Demo](https://ckb-fi-sdk.vercel.app/)
 
 <br/>
 
