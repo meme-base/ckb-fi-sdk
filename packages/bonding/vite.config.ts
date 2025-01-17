@@ -3,6 +3,9 @@ import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
 
 export default defineConfig({
+  define: {
+    'process.env.NODE_ENV': '"production"'
+  },
   plugins: [
     dts({
       outDir: 'dist',
