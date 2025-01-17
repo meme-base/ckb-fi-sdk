@@ -11,10 +11,7 @@
 #### 1、UMD
 
 ```html
-<script
-  src="https://cdn.jsdelivr.net/npm/@ckb-fi/bonding@latest/dist/ckb-fi-bonding.umd.js"
-  defer
-></script>
+<script src="https://cdn.jsdelivr.net/npm/@ckb-fi/bonding@latest/dist/ckb-fi-bonding.umd.js"></script>
 
 <script>
   window.onload = function () {
