@@ -15,7 +15,7 @@
 
 <script>
   window.onload = function () {
-    const BondingInstance = new Bonding()
+    const BondingInstance = new CKBFiBonding.Bonding()
     console.log(BondingInstance, 'CKB-FI Bonding SDK initialized')
   }
 </script>

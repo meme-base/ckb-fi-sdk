@@ -13,7 +13,7 @@
   "dependencies": {
     "@ckb-ccc/connector-react": "^1.0.11",
     "@ckb-fi/assets": "workspace:*",
-    "@ckb-fi/bonding": "0.0.1-beta.1",
+    "@ckb-fi/bonding": "0.0.1-beta.3",
     "@ckb-fi/utils": "workspace:*",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.0",

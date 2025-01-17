@@ -22,7 +22,7 @@ The SDK for CKB-FI ecosystem.
 
 <script>
   window.onload = function () {
-    const BondingInstance = new Bonding()
+    const BondingInstance = new CKBFiBonding.Bonding()
     console.log(BondingInstance, 'CKB-FI Bonding SDK initialized')
   }
 </script>
@@ -144,5 +144,6 @@ This Turborepo has some additional tools already setup for you:
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
+- [Purge JSdelivr Cache](https://www.jsdelivr.com/tools/purge) for clear file cache
 
 <br/>
