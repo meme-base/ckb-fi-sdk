@@ -1,4 +1,5 @@
 .web-demo-container {
+  flex: 1;
   width: 100%;
   padding: 20px;
   background: rgba(255, 255, 255, 0.1);
@@ -86,6 +87,7 @@
 
   button {
     width: fit-content;
+    white-space: nowrap;
     font-size: 13px;
   }
 
